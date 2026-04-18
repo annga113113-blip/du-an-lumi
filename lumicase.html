@@ -130,9 +130,7 @@ body{background:var(--off-white);color:var(--text);font-family:'Plus Jakarta San
 .product-card{background:white;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:var(--tr);position:relative;}
 .product-card:hover{border-color:var(--aqua);transform:translateY(-6px);box-shadow:var(--shadow-lg);}
 .product-img-wrap{width:100%;height:220px;background:linear-gradient(145deg,var(--aqua-light),var(--off-white));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
-.img-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-light);text-align:center;padding:20px;}
-.img-placeholder .ph{font-size:3.5rem;opacity:0.35;}
+.product-img-wrap img{width:100%;height:100%;object-fit:contain;display:block;padding:8px;}.img-placeholder .ph{font-size:3.5rem;opacity:0.35;}
 .img-placeholder span{font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;opacity:0.7;}
 .prod-badge{position:absolute;top:12px;left:12px;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:999px;}
 .prod-badge.hot{background:var(--aqua);color:white;}
@@ -1502,7 +1500,7 @@ footer::before{
     </div>
     <div class="hero-right">
       <div class="hero-visual">
-        <div class="hero-phone-card"><img class="hero-product-img" src="Ảnh màn hình 2026-04-14 lúc 18.19.32.png" alt="Ốp LumiCase màu hồng"></div>
+        <div class="hero-phone-card"><img class="hero-product-img" src="anhmanhinh12.png" alt="Ốp LumiCase màu hồng"></div>
         <div class="hero-float-1"><div class="f-lbl">Giảm giá đặc biệt</div><div class="f-val">Đến −30%</div></div>
         <div class="hero-float-2">✦ New Arrivals</div>
       </div>
@@ -1807,7 +1805,7 @@ footer::before{
       <p>LumiCase ra đời năm 2025 từ niềm tin rằng mỗi chiếc ốp lưng không chỉ là vật bảo vệ — đó là cách bạn thể hiện cá tính. Chúng tôi kết hợp công nghệ in ấn tiên tiến với chất liệu cao cấp để tạo ra những sản phẩm vừa đẹp vừa bền.</p>
       <p style="margin-top:14px;">Với hơn 500 mẫu thiết kế và 15.000+ khách hàng tin tưởng, LumiCase tự hào là thương hiệu ốp lưng được yêu thích tại Việt Nam.</p>
     </div>
-    <div class="about-img"><span class="ph-icon">🌟</span><span>[ Ảnh thương hiệu ]</span></div>
+    <div class="about-img"><span class="ph-icon">🌟</span><span></span></div>
   </div>
   <div class="values-grid">
     <div class="val-card"><div class="val-icon">🎨</div><div class="val-title">Thiết Kế Độc Quyền</div><div class="val-desc">Đội ngũ thiết kế sáng tạo không ngừng, mỗi mẫu là một tác phẩm nghệ thuật.</div></div>
@@ -2066,7 +2064,7 @@ if (products.length > 0) {
   products[0].brand = 'LumiCase iPhone';
   products[0].cat = 'iPhone';
   products[0].emoji = '🍎';
-  products[0].img = 'Ảnh màn hình 2026-04-14 lúc 18.19.32.png';
+  products[0].img = 'anhmanhinh12.png'; 
 }
 
 var cart = [];
@@ -2094,7 +2092,8 @@ function productCard(p) {
   var badgeCls = p.badge === 'new' ? 'new' : (p.badge === 'hot' ? 'hot' : 'sale');
   var badgeHtml = p.badge ? '<div class="prod-badge ' + badgeCls + '">' + p.badge.toUpperCase() + '</div>' : '';
   var imgHtml = p.img
-    ? '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block;">'
+    ? '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:contain;padding:8px;display:block;">'
+
     : '<div class="img-placeholder"><span class="ph">' + p.emoji + '</span><span>[ Ảnh sản phẩm ]</span></div>';
   return (
     '<div class="product-card" onclick="showDetail(' + p.id + ')">' +
