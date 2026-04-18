@@ -26,8 +26,6 @@
   --shadow:     0 4px 24px rgba(0,170,170,0.12);
   --shadow-lg:  0 12px 48px rgba(0,170,170,0.2);
   --tr:         0.25s cubic-bezier(.4,0,.2,1);
-  --topbar-h:   33px;
-  --nav-h:      66px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -36,18 +34,9 @@ body{background:var(--off-white);color:var(--text);font-family:'Plus Jakarta San
 ::-webkit-scrollbar-track{background:var(--aqua-light);}
 ::-webkit-scrollbar-thumb{background:var(--aqua);border-radius:3px;}
 
-.topbar{
-  background:var(--aqua);color:white;text-align:center;padding:8px 20px;
-  font-size:0.78rem;font-weight:500;letter-spacing:0.8px;
-  position:fixed;top:0;left:0;right:0;z-index:1100;
-}
+.topbar{background:var(--aqua);color:white;text-align:center;padding:8px 20px;font-size:0.78rem;font-weight:500;letter-spacing:0.8px;position:relative;z-index:200;}
 
-nav{
-  position:fixed;top:var(--topbar-h);left:0;right:0;z-index:1000;
-  background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);
-  border-bottom:1.5px solid var(--border);height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;padding:0 48px;
-}
+nav{position:fixed;top:33px;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1.5px solid var(--border);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
 .nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:1px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:6px;}
 .nav-logo .dot{width:10px;height:10px;border-radius:50%;background:var(--aqua);display:inline-block;box-shadow:0 0 0 3px var(--aqua-glow);}
 .nav-links{display:flex;gap:4px;list-style:none;}
@@ -60,7 +49,7 @@ nav{
 .btn-login{background:var(--aqua);color:white;border:none;border-radius:999px;padding:10px 22px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:var(--tr);font-family:'Plus Jakarta Sans',sans-serif;}
 .btn-login:hover{background:var(--aqua-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,170,170,0.35);}
 
-.page{display:none;min-height:100vh;padding-top:calc(var(--topbar-h) + var(--nav-h));}
+.page{display:none;min-height:100vh;padding-top:99px;}
 .page.active{display:block;}
 
 .btn-primary{background:var(--aqua);color:white;border:none;border-radius:999px;padding:14px 34px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:var(--tr);font-family:'Plus Jakarta Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;}
@@ -69,11 +58,7 @@ nav{
 .btn-outline:hover{border-color:var(--aqua);color:var(--aqua-dark);}
 
 /* HERO */
-.hero{
-  min-height:calc(100vh - (var(--topbar-h) + var(--nav-h)));
-  display:grid;grid-template-columns:1fr 1fr;align-items:center;
-  padding:60px 80px;position:relative;overflow:hidden;
-}
+.hero{min-height:calc(100vh - 99px);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:60px 80px;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 80% 50%,rgba(0,201,200,0.10) 0%,transparent 70%),radial-gradient(ellipse 400px 300px at 10% 80%,rgba(0,201,200,0.07) 0%,transparent 60%);pointer-events:none;}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.4;pointer-events:none;}
 .hero-left{position:relative;z-index:1;}
@@ -489,7 +474,6 @@ footer::before{content:'LUMICASE';position:absolute;bottom:-30px;right:-10px;fon
   .sidebar{display:none;}
   .cart-layout{grid-template-columns:1fr;padding:24px 20px;}
   .contact-layout,.policy-layout{grid-template-columns:1fr;padding:40px 20px;}
-  .pol-nav{position:static;top:auto;width:100%;margin-bottom:16px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .promo-banner{margin:0 20px;grid-template-columns:1fr;padding:40px 32px;}
   .newsletter-wrap{padding:0 20px 60px;}
@@ -1309,14 +1293,6 @@ function toast(msg,type) {
 }
 
 // INIT
-var maxProductPrice = products.reduce(function(max, p){ return p.price > max ? p.price : max; }, 0);
-var rangeMax = Math.ceil(maxProductPrice / 1000);
-var priceRangeEl = document.getElementById('priceRange');
-if (priceRangeEl) {
-  priceRangeEl.max = rangeMax;
-  priceRangeEl.value = rangeMax;
-  priceUpdate(priceRangeEl);
-}
 showPage('home');
 </script>
 </body>
